@@ -1,5 +1,5 @@
 import bigInt from "big-integer"
-import { calculate } from "./calculateBigNums.js"
+import { calculateSimple } from "./calculateBigNums.js"
 import {ferma} from "./ferma.js"
 
 export const generetaLargeNumbeRabin = (rangeMin, rangeMax) => {
@@ -7,7 +7,7 @@ export const generetaLargeNumbeRabin = (rangeMin, rangeMax) => {
 
     const a = 2
     const Pmax = bigInt.randBetween(rangeMin, rangeMax)
-    const k = Math.log2(calculate(Pmax).divideBy(2).toString()).toFixed(2);
+    const k = Math.log2(calculateSimple(Pmax).divideBy(2).toString()).toFixed(2);
 
     const p = BigInt(2 * Math.pow(2, k))
     let p1 = p + BigInt(1)
@@ -25,16 +25,11 @@ export const generetaLargeNumbeRabin = (rangeMin, rangeMax) => {
             break
         }
 
-        p1 = calculate(p1).add(2)
-        p2 = calculate(p2).add(-2)
-        console.log("Not prime")
+        p1 = calculateSimple(p1).add(2)
+        p2 = calculateSimple(p2).add(-2)
+        console.log("No prime numbers \n")
         
     }
-    
-    console.log(`p1 = ${p1}`)
-    console.log(`p2 = ${p2}`)
-
-
 }
 
 
